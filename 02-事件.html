@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vue2.0-01day-02ex</title>
+</head>
+<body>
+  <div id="main">
+    <hr>
+    <h2>-:v-on:click="fn"</h2>
+    <p class="tit">绑定事件监听器</p>
+    <b>{{count}}</b>
+    <button v-on:click="btnFn">点击执行</button>
+    <input type="text" v-model="userInText"   v-on:keyup.enter="inputEnterKeyupFn">
+    <!-- <p>{{userInText}}</p> -->
+    <hr>
+    <h2>-:v-model</h2>
+    <p class="tit">绑定数据源-用于表单元素-</p>
+    v-model指令，我理解为绑定数据源。就是把数据绑定在特定的表单元素上，类似ng中的ng-model;可以很容易的实现双向数据绑定。
+  </div>
+</body>
+<script src="assets/js/vue.js"></script>
+<script>
+  var app=new Vue({
+    'el':'#main',
+    'data':{
+      'count':0
+      'userInText':"122"
+    },
+    'methods':{
+      btnFn:function(){
+        this.count++;
+      },
+      inputEnterKeyupFn:function(){
+          this.userInText=this.userInText+"!"
+          console.log(this.userInText)
+      }
+    }
+  })
+</script>
+</html>
