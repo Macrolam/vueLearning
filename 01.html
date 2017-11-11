@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vue2.0-01day-01ex</title>
+  <style>
+    .red{color:red;}
+  </style>
+  <script src="assets/js/vue.js"></script>
+</head>
+<body>
+<div  id="main">
+<hr>
+<h2>-:v-if</h2>
+<!-- <h1 v-if="msg=='ok'">请求已经成功了！</h1> -->
+<h1 v-if="code==2000">2000请求！</h1>
+<h1 v-else-if="code==3000">非2000请求！</h1>
+<h1 v-else>请求已经失败了！</h1>
+<hr>
+<h2>-:v-html</h2>
+<ul v-html="">
+  <li v-html='htmlM'>123</li>
+  <li>123</li>
+  <li>123</li>
+  <li>123</li>
+</ul>
+<hr>
+<h2>-:v-for</h2>
+<table>
+  <thead>
+    <tr>01：v-for遍历数组</tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td v-for="item in arr1">
+        {{item}}
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="red">ps:需要哪个标签循环就把v-for写在谁身上</p>
+<br>
+<table>
+  <thead>
+    <tr>02：v-for遍历数组对象</tr>
+  </thead>
+  <tbody>
+    <tr v-for='item in arrObj'>
+      <td >
+        {{item.name}}---{{item.age}}岁---{{item.level}}级
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<table>
+  <thead>
+    <tr>03：v-for遍历数组对象-加入索引序号</tr>
+  </thead>
+  <tbody v-for='item,index in arrObj'>
+    <tr >
+      <td>
+        {{index}}:{{item.name}}---{{item.age}}岁---{{item.level}}级
+      </td>
+    </tr>
+  </tbody>
+
+</table>
+<p class="red">ps:这里注意下，不管v-for写在tr还是不优雅的tbody身上，数据渲染必须要写在td，否则报错，找不到对象上的属性。也就是tr必须内嵌td;和angular里的ng-repeat一样</p>
+<br>
+</div>
+</body>
+<script>
+var app=new Vue({
+  'el':'#main',
+  'data':{
+    'msg':'ok',
+    'code':4000,
+    'htmlM':'<li>为了防止xss攻击，所以动态绑定的dom必须是靠谱的.</li>',
+    'arrObj':[
+        {
+          'age':10,
+          'name':'mac01',
+          'level':'4'
+        },
+        {
+          'age':5,
+          'name':'mac02',
+          'level':'6'
+        },{
+          'age':11,
+          'name':'mac03',
+          'level':'6'
+        },
+    ],
+    'arr1':[9,6,8,0,10],
+  },
+});
+
+</script>
+</html>
